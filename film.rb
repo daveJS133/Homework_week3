@@ -15,7 +15,7 @@ class Film
   end
 
   def self.save()
-    sql = 'INSERT INTO films (name) VALUES (#{@name});'
+    sql = "INSERT INTO films (name) VALUES ('#{@name}');"
     film = SqlRunner.run( sql )
     @id = film['id'].to_i
   end
@@ -30,9 +30,10 @@ class Film
       SqlRunner.run(sql)
     end  
 
-  def self.delete_all()
-    sql = 'DELETE FROM films'
-  end
+ def self.delete_all()
+   sql = 'DELETE FROM customers'
+   SqlRunner.run(sql)
+ end
 
   def self.get_many(sql)
     films = SqlRunner.run(sql)
