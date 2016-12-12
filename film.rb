@@ -14,10 +14,11 @@ class Film
 
   end
 
-  def self.save()
-    sql = "INSERT INTO films (name) VALUES ('#{@name}');"
+  def save()
+    sql = "INSERT INTO films (title, price) VALUES ('#{@title}', #{@price})
+    RETURNING *;"
     film = SqlRunner.run( sql )
-    @id = film['id'].to_i
+    @id = film[0]['id'].to_i
   end
 
   def update()
